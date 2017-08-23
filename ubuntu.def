@@ -16,4 +16,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     
     #has taxoner
     git clone https://github.com/scottdaniel/scotts-fortune.git
+    cp /scotts-fortune/src/taxoner64/taxoner64 /usr/bin
 
