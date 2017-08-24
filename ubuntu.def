@@ -4,7 +4,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 
 %runscript
-    echo "This is what happens when you run the container..."
+    exec /usr/bin/taxoner64 "$@"
 
 
 %post
@@ -12,9 +12,13 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sed -i 's/$/ universe/' /etc/apt/sources.list
     
     #essential stuff
-    apt -y --force-yes install build-essential curl git sudo man vim autoconf libtool wget
+    apt -y --force-yes install git sudo man vim 
     
-    #has taxoner
-    git clone https://github.com/scottdaniel/scotts-fortune.git
-    cp /scotts-fortune/src/taxoner64/taxoner64 /usr/bin
+    #maybe dont need, add later if do:
+    #build-essential curl autoconf libtool wget
 
+    #setting up taxoner
+    git clone https://github.com/scottdaniel/scotts-fortune.git
+    tar -xzf /scotts-fortune/src/taxoner64_version1.4.tar.gz
+    mv taxoner64/taxoner64 /usr/bin
+    rm -rf taxoner64
