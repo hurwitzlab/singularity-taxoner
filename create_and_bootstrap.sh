@@ -5,7 +5,7 @@ set -x
 echo "Hello! starting $(date)"
 
 sudo rm -rf taxoner.img
-singularity create -s 4096 taxoner.img
-sudo singularity bootstrap taxoner.img ubuntu.def
+singularity create -s 768 taxoner.img
+sudo singularity bootstrap taxoner.img ubuntu.sh
 
 echo "Goodbye! ending $(date)"
