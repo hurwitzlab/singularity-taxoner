@@ -12,7 +12,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sed -i 's/$/ universe/' /etc/apt/sources.list
     
     #essential stuff
-    apt -y --force-yes install git sudo man vim build-essential 
+    apt -y --force-yes install git sudo man vim build-essential perl
     
     #maybe dont need, add later if do:
     #curl autoconf libtool wget
@@ -25,10 +25,16 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd taxoner/taxoner64v1.4/
     bash make.sh
     mv ./taxoner64 /usr/bin
+
+    cd ../PATRIC_dbCreator
+    sudo chmod +x *.pl
+    mv *.pl /usr/bin
 #    rm -rf taxoner64
 
     #create a directory to work in
     mkdir /work
+    #directory to map bt2 db to
+    mkdir /bt2
 
     #so we dont get those stupid worning on hpc/pbs
     mkdir /extra
