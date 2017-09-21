@@ -12,9 +12,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sed -i 's/$/ universe/' /etc/apt/sources.list
     
     #essential stuff
-    apt -y --force-yes install git sudo man vim build-essential
+    apt update
+    apt -y --force-yes install git sudo man vim build-essential wget
     #maybe dont need, add later if do:
-    #curl autoconf libtool wget
+    #curl autoconf libtool 
 
     #setting up taxoner
 #    git clone https://github.com/scottdaniel/scotts-fortune.git
