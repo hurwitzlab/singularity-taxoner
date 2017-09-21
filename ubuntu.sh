@@ -12,8 +12,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sed -i 's/$/ universe/' /etc/apt/sources.list
     
     #essential stuff
-    apt -y --force-yes install git sudo man vim build-essential perl
-    
+    apt -y --force-yes install git sudo man vim build-essential
     #maybe dont need, add later if do:
     #curl autoconf libtool wget
 
@@ -30,6 +29,13 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sudo chmod +x *.pl
     mv *.pl /usr/bin
 #    rm -rf taxoner64
+
+    #get perl 5.22.1
+    wget http://www.cpan.org/src/5.0/perl-5.22.1.tar.gz
+    tar xvfz perl-5.22.1.tar.gz
+    cd perl-5.22.1 && ./Configure -Duseithreads -des && make && make test && make install
+    /usr/local/bin/cpan -u
+
 
     #create a directory to work in
     mkdir /work
