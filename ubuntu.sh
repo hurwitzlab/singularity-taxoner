@@ -35,6 +35,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mkdir /work
     #directory to map bt2 db to
     mkdir /bt2
+    #directory to map metadata to
+    mkdir /metadata
+    #directory to map scripts / script settings just in case needed
+    mkdir /scripts
 
     #so we dont get those stupid worning on hpc/pbs
     mkdir /extra
