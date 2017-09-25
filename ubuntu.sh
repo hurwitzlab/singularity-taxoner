@@ -2,6 +2,9 @@ BootStrap: debootstrap
 OSVersion: trusty
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
+%environment
+    #need to put /usr/local/bin first so it doesnt use perl 5.18
+    export PATH="/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin"
 
 %runscript
     exec /usr/bin/taxoner64 "$@"
@@ -13,6 +16,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     
     #essential stuff
     apt update
+    apt -y --force-yes remove perl
     apt -y --force-yes install git sudo man vim build-essential wget
     #maybe dont need, add later if do:
     #curl autoconf libtool 
@@ -24,11 +28,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git clone https://github.com/hurwitzlab/taxoner.git
     cd taxoner/taxoner64v1.4/
     bash make.sh
-    mv ./taxoner64 /usr/bin
+    mv ./taxoner64 /usr/local/bin
 
     cd ../PATRIC_dbCreator
     sudo chmod +x *.pl
-    mv *.pl /usr/bin
+    mv *.pl /usr/local/bin
 #    rm -rf taxoner64
 
     #get perl 5.22.1
