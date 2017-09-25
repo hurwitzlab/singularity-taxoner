@@ -7,7 +7,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PATH="/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin"
 
 %runscript
-    exec /usr/bin/taxoner64 "$@"
+    exec /usr/local/bin/taxoner64 "$@"
 
 
 %post
