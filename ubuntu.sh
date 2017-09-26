@@ -5,6 +5,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %environment
     #need to put /usr/local/bin first so it doesnt use perl 5.18
     export PATH="/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin"
+    export PATH="/media/miniconda/bin:$PATH"
 
 %runscript
     exec /usr/local/bin/taxoner64 "$@"
@@ -35,12 +36,16 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mv *.pl /usr/local/bin
 #    rm -rf taxoner64
 
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+    bash miniconda.sh -b -p /media/miniconda
+    PATH="/media/miniconda/bin:$PATH"
+    conda install -y -c bioconda bowtie2
+
     #get perl 5.22.1
     wget http://www.cpan.org/src/5.0/perl-5.22.1.tar.gz
     tar xvfz perl-5.22.1.tar.gz
     cd perl-5.22.1 && ./Configure -Duseithreads -des && make && make test && make install
     /usr/local/bin/cpan -u
-
 
     #create a directory to work in
     mkdir /work
@@ -49,6 +54,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #directory to map metadata to
     mkdir /metadata
     #directory to map scripts / script settings just in case needed
+    #as in that "extra_commands.txt" for taxoner
     mkdir /scripts
 
     #so we dont get those stupid worning on hpc/pbs
