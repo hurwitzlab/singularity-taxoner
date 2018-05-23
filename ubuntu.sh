@@ -47,20 +47,24 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd perl-5.22.1 && ./Configure -Duseithreads -des && make && make test && make install
     /usr/local/bin/cpan -u
 
-    #create a directory to work in
-    mkdir /work
-    #directory to map bt2 db to
-    mkdir /bt2
-    #directory to map metadata to
-    mkdir /metadata
-    #directory to map scripts / script settings just in case needed
-    #as in that "extra_commands.txt" for taxoner
-    mkdir /scripts
+    # Can't bind directories anymore on TACC or UAHPC due to security constraints #
+#    #create a directory to work in
+#    mkdir /work
+#    #directory to map bt2 db to
+#    mkdir /bt2
+#    #directory to map metadata to
+#    mkdir /metadata
+#    #directory to map scripts / script settings just in case needed
+#    #as in that "extra_commands.txt" for taxoner
+#    mkdir /scripts
 
     #so we dont get those stupid worning on hpc/pbs
-    mkdir /extra
-    mkdir /xdisk
+    mkdir -p /extra
+    mkdir -p /xdisk
+    mkdir -p /rsgrps
+    mkdir -p /cm/shared
     #so we dont get those stupid perl warnings
     locale-gen en_US.UTF-8
+
 %test
     taxoner64 -h
