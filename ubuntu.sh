@@ -58,7 +58,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 #    #as in that "extra_commands.txt" for taxoner
 #    mkdir /scripts
 
-    #so we dont get those stupid worning on hpc/pbs
+    # Set bind points
     mkdir -p /extra
     mkdir -p /xdisk
     mkdir -p /rsgrps
